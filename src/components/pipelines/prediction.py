@@ -1,30 +1,36 @@
-import pandas as pd
-import numpy as np
-from src.exception import CustomException
-#from src.utils import save_object
-from src.logger import logging
-from src.utils  import load_object
-import os
 import sys
+import os
+from src.exception import CustomException
+from src.logger import logging
+from src.utils import load_object
+import pandas as pd
 
-class predictpipline:
+
+class PredictPipeline:
     def __init__(self):
         pass
-    def predict(self):
+
+    def predict(self,features):
         try:
-            preprocessor_path=os.path.join("artifcats","preprocessor.pkl")
-            model_path=os.path.join("artifacts","model.pkl")
+            preprocessor_path=os.path.join('artifacts','preprocessor.pkl')
+            model_path=os.path.join('artifacts','model.pkl')
+
             preprocessor=load_object(preprocessor_path)
             model=load_object(model_path)
-            data_scaled=preprocessor.transform(features)                                   
+
+            data_scaled=preprocessor.transform(features)
+
             pred=model.predict(data_scaled)
             return pred
+            
 
         except Exception as e:
-            logging.info("excetion has occured")
+            logging.info("Exception occured in prediction")
             raise CustomException(e,sys)
-class Customdata:
-    def __init__(self, carat:float,
+        
+class CustomData:
+    def __init__(self,
+                 carat:float,
                  depth:float,
                  table:float,
                  x:float,
@@ -33,6 +39,7 @@ class Customdata:
                  cut:str,
                  color:str,
                  clarity:str):
+        
         self.carat=carat
         self.depth=depth
         self.table=table
@@ -43,9 +50,7 @@ class Customdata:
         self.color = color
         self.clarity = clarity
 
-        
-
-    def get_data(self):
+    def get_data_as_dataframe(self):
         try:
             custom_data_input_dict = {
                 'carat':[self.carat],
@@ -64,5 +69,3 @@ class Customdata:
         except Exception as e:
             logging.info('Exception Occured in prediction pipeline')
             raise CustomException(e,sys)
-
-
