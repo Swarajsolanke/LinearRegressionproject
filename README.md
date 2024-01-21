@@ -1,5 +1,4 @@
 
-=======
 # Diamond price prediction #
 ## This project is designed to forecast the price of diamonds by considering various features such as cut, color, depth, and clarity. Users can interact with a webpage where they select the desired characteristics for the diamond, and the model will predict the corresponding price in Indian rupees based on their inputs.
 ----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -15,7 +14,8 @@
 4.run the application.
 
 
-5. to run the docker image
-docker  build -t dimondprediction:latest .
+5. to run the docker image:
+
+       docker  build -t dimondprediction:latest .
 
 
