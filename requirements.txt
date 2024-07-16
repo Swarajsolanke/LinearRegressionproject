@@ -5,6 +5,7 @@ seaborn
 Flask
 dataclasses
 scikit-learn
+gunicorn
 -e . #This flag indicates that you want to install the package in editable mode.
 
 
